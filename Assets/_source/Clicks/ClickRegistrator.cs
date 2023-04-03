@@ -1,63 +1,44 @@
+using System;
+using DevourNovelEngine.Prototype.Utils;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Game.Clicks
 {
     public sealed class ClickRegistrator : MonoBehaviour
     {
-        private InputAction _inputAction;
-        private System.Random _rng;
-        private bool _clickRegistered;
+        [SerializeField] private NetworkGameManager _gm;
 
 
-        private void Start()
-        {
-            _rng = new();
-            GenerateNewBind();
-        }
+        [SerializeField] private SceneBounderBase _bounder;
+
+        [SerializeField] private float _newClickableSpawnDelay = 0.3f;
+
+        private float _spawnCD;
+
 
         private void Update()
         {
-            if (_clickRegistered)
-            {
-                _clickRegistered = false;
-                GenerateNewBind();
-            }
+            CountDown();
         }
 
-        private void GenerateNewBind()
+        private void CountDown()
         {
-            if (_inputAction != null)
-                _inputAction.Dispose();
+            if ((_spawnCD -= Time.deltaTime) > 0)
+                return;
 
-            char letter = GetRandomLetter();
-            _inputAction = new InputAction(string.Empty,
-                                           InputActionType.Button,
-                                           $"<Keyboard>/{letter}",
-                                           string.Empty,
-                                           string.Empty,
-                                           string.Empty);
 
-            _inputAction.performed += RegisterClick;
-            _inputAction.Enable();
-            Debug.Log(letter);
+            //ResetCD();
         }
 
-        private void RegisterClick(InputAction.CallbackContext _)
+        private void ResetCD()
         {
-            Debug.Log("click registered!");
-            _clickRegistered = true;
+
         }
 
-        private char GetRandomLetter()
+        internal void RegisterClick(ClickableTarget clickTarget)
         {
-            return (char)RandomRange((int)'a', (int)'z' + 1);
+            _gm.RegisterPoints(clickTarget.PointsDelta);
         }
 
-        private int RandomRange(int min, int max)
-        {
-            //return UnityEngine.Random.Range(min, max);
-            return _rng.Next(min, max);
-        }
     }
 }
