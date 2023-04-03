@@ -1,20 +1,7 @@
 ﻿using Unity.Netcode;
-using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Game.Clicks
+namespace Game.Core
 {
-    public sealed class ClickableEntity : MonoBehaviour, IPointerDownHandler
-    {
-       
-    }
-
-    public sealed class NailsGameManager : MonoBehaviour
-    {
-        [SerializeField] private NetworkGameManager _netGM;
-        [SerializeField] private 
-    }
-
     public sealed class NetworkGameManager : NetworkBehaviour
     {
         public delegate void ProgressChangedDelegate(int newValue, int delta);
@@ -32,7 +19,7 @@ namespace Game.Clicks
 
         private void Awake()
         {
-            _progress.OnValueChanged += HandleProgressValueChanged;    
+            _progress.OnValueChanged += HandleProgressValueChanged;
         }
 
 
