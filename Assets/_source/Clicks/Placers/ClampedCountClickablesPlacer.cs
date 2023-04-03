@@ -4,7 +4,22 @@ using UnityEngine;
 
 namespace Game.Clicks
 {
-    [DefaultExecutionOrder(500)]
+
+    public abstract class ClickablesSpawner : MonoBehaviour
+    {
+        [SerializeField] private ClampedCountClickablesPlacer _placer;
+
+
+        protected virtual void Awake()
+        {
+            _placer.Init(Spawn);
+        }
+
+
+        protected abstract ClickableTarget Spawn();
+    }
+
+
     public sealed class ClampedCountClickablesPlacer : ClickablesPlacerBase
     {
         [SerializeField] private int _minCount;
@@ -31,6 +46,7 @@ namespace Game.Clicks
             _spawnFunc = spawnFunc;
             enabled = true;
         }
+
 
         private void Update()
         {
@@ -66,6 +82,7 @@ namespace Game.Clicks
             ++_currentCount;
             var inst = _spawnFunc();
             inst.Hitted += HandleClickableHitted;
+            InitClickable(inst);
         }
 
         private void HandleClickableHitted(ClickableTarget clickable)

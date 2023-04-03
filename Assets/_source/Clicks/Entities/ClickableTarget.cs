@@ -14,8 +14,11 @@ namespace Game.Clicks
 
             public void Act(Vector3 pos)
             {
-                _ = Instantiate(_particles, pos, Quaternion.identity);
-                AudioSource.PlayClipAtPoint(_sound, pos);
+                if (_particles != null)
+                    _ = Instantiate(_particles, pos, Quaternion.identity);
+
+                if (_sound != null)
+                    AudioSource.PlayClipAtPoint(_sound, pos);
             }
         }
 
