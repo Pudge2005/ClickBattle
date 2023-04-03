@@ -1,7 +1,9 @@
 ﻿using Unity.Netcode;
+using UnityEngine;
 
 namespace Game.Core
 {
+    [DefaultExecutionOrder(-9999)]
     public sealed class NetworkGameManager : NetworkBehaviour
     {
         public delegate void ProgressChangedDelegate(int newValue, int delta);
@@ -11,21 +13,32 @@ namespace Game.Core
             new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
 
-        public int Progress => _progress.Value;
+        private static NetworkGameManager _instance;
 
 
-        public event ProgressChangedDelegate ProgressChanged;
+        public static int Progress => _instance._progress.Value;
+
+
+        private event ProgressChangedDelegate ProgressChangedInternal;
+
+
+        public static event ProgressChangedDelegate ProgressChanged
+        {
+            add => _instance.ProgressChangedInternal += value;
+            remove => _instance.ProgressChangedInternal -= value;
+        }
 
 
         private void Awake()
         {
+            _instance = this;
             _progress.OnValueChanged += HandleProgressValueChanged;
         }
 
 
-        public void RegisterPoints(int delta)
+        public static void RegisterPoints(int delta)
         {
-            ChangeProgressServerRpc(delta);
+            _instance.ChangeProgressServerRpc(delta);
         }
 
 
@@ -37,7 +50,7 @@ namespace Game.Core
 
         private void HandleProgressValueChanged(int previousValue, int newValue)
         {
-            ProgressChanged?.Invoke(newValue, newValue - previousValue);
+            ProgressChangedInternal?.Invoke(newValue, newValue - previousValue);
         }
     }
 }
