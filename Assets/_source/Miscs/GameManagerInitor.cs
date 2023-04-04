@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Game.Core;
+using UnityEngine;
 
-namespace Game
+namespace Game.Miscs
 {
     [DefaultExecutionOrder(-999)]
-    public sealed class GameManagerIniter : MonoBehaviour
+    internal sealed class GameManagerInitor : MonoBehaviour
     {
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private GameObject _networkGameManager;
