@@ -1,27 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using Game.Modifiers;
 using Game.Processors;
-using Game.Upgrades;
 using UnityEngine;
 
 namespace Game.Core
 {
     public sealed class PassiveEarningManager : MonoBehaviour
     {
+        [SerializeField] private EarnModifiersCollection _earnModifiersCollection;
 
     }
 
-    public sealed class ActiveEarningManager : MonoBehaviour
-    {
-        private List<ActiveUpgradeData>
-    }
-    
+
     [DefaultExecutionOrder(-1000)]
     public sealed class GameManager : MonoBehaviour
     {
-        public delegate void ClickRegisteredDelegate(float bounty);
+        public delegate void ClickRegisteredDelegate(float bounty, Vector3 clickWorldPosition);
 
 
+        [SerializeField] private float _defaultClickReward = 10f;
         [SerializeField] private AntiAutoClicker _antiAutoClicker;
+        [SerializeField] private EarnModifiersCollection _earnModifiersCollection;
 
         private INetworkGameManager _netGM;
 
@@ -49,18 +48,24 @@ namespace Game.Core
             _netGM = networkGameManager;
         }
 
-        public static void RegisterClick()
+        public static void RegisterClick(Vector3 clickWorldPos)
         {
             if (!_instance._antiAutoClicker.ShouldRegisterClick())
                 return;
 
-            RegisterClickInternal();
+            RegisterClickInternal(clickWorldPos);
         }
 
 
-        private static void RegisterClickInternal()
+        private static void RegisterClickInternal(Vector3 clickWorldPos)
         {
+            float bounty = CalculateClickReward();
+            _instance.ClickRegisteredInternal?.Invoke(bounty, clickWorldPos);
+        }
 
+        private static float CalculateClickReward()
+        {
+            return _instance._earnModifiersCollection.pro
         }
     }
 }

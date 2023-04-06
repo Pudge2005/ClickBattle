@@ -8,7 +8,7 @@ namespace Game.Clicker
     {
         public void OnPointerDown(PointerEventData eventData)
         {
-            GameManager.RegisterClick();
+            GameManager.RegisterClick(eventData.pointerPressRaycast.worldPosition);
         }
     }
 }

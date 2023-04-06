@@ -9,7 +9,6 @@ namespace Game.Clicker
     {
         [SerializeField] private PoppingText _popTextPrefab;
         [SerializeField] private Gradient _popTextGradient;
-        [SerializeField] private Transform _popTextSpawnPoint;
         [SerializeField] private Vector3 _minDir = new Vector3(-0.5f, 1f, 0f).normalized;
         [SerializeField] private Vector3 _maxDir = new Vector3(0.5f, 1f, 0f).normalized;
 
@@ -24,9 +23,9 @@ namespace Game.Clicker
             GameManager.ClickRegistered += HandleClickRegistered;
         }
 
-        private void HandleClickRegistered(float bounty)
+        private void HandleClickRegistered(float bounty, Vector3 clickWorldPos)
         {
-            var popInst = Instantiate(_popTextPrefab, _popTextSpawnPoint.position, _popTextSpawnPoint.rotation);
+            var popInst = Instantiate(_popTextPrefab, clickWorldPos, Quaternion.identity);
             popInst.UseWorldFlyDirection = true;
             popInst.FlyDirection = Vector3.Lerp(_minDir, _maxDir, (float)_directionRng.NextDouble());
             popInst.Text = Mathf.RoundToInt(bounty).ToString();

@@ -20,7 +20,7 @@ namespace Game
 
 
         public event INetworkGameManager.ScoreChangedDelegate OpponentScoreChanged;
-        public event INetworkGameManager.UpgradeAffectorAppliedDelegate UpgradeAffectorApplied;
+        public event INetworkGameManager.ModifierLevelChangedDelegate ModifierLevelChanged;
 
         public void ChangePlayerScore(float delta)
         {

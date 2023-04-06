@@ -1,11 +1,13 @@
-﻿namespace Game
+﻿using Game.Modifiers;
+
+namespace Game
 {
     public interface INetworkGameManager
     {
         public delegate void ScoreChangedDelegate(float newValue);
         public delegate void ScoreChangedWithDeltaDelegate(float newValue, float delta);
 
-        public delegate void UpgradeAffectorAppliedDelegate(ActiveUpgradeAffectorSo affector, int lvl, float duration);
+        public delegate void ModifierLevelChangedDelegate(RewardModifierSo modifier, int lvl, bool isPositive);
 
 
         float PlayerScore { get; }
@@ -33,7 +35,7 @@
 
         event ScoreChangedDelegate OpponentScoreChanged;
 
-        event UpgradeAffectorAppliedDelegate UpgradeAffectorApplied;
+        event ModifierLevelChangedDelegate ModifierLevelChanged;
 
 
         void ChangePlayerScore(float delta);
