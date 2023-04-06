@@ -39,5 +39,6 @@ namespace Game
 
 
         void ChangePlayerScore(float delta);
+        void SetPlayerScore(float value);
     }
 }

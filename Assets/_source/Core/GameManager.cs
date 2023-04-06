@@ -1,39 +1,33 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Game.Modifiers;
 using Game.Processors;
 using UnityEngine;
 
 namespace Game.Core
 {
-    public sealed class PassiveEarningManager : MonoBehaviour
-    {
-        [SerializeField] private EarnModifiersCollection _earnModifiersCollection;
-
-    }
-
-
     [DefaultExecutionOrder(-1000)]
     public sealed class GameManager : MonoBehaviour
     {
-        public delegate void ClickRegisteredDelegate(float bounty, Vector3 clickWorldPosition);
+        public delegate void BalanceChangedDelegate(GameManager gameManager, float newBalance, float delta);
 
-
-        [SerializeField] private float _defaultClickReward = 10f;
-        [SerializeField] private AntiAutoClicker _antiAutoClicker;
-        [SerializeField] private EarnModifiersCollection _earnModifiersCollection;
-
-        private INetworkGameManager _netGM;
 
         private static GameManager _instance;
 
+        private INetworkGameManager _netGM;
+        private float _balance;
 
-        private event ClickRegisteredDelegate ClickRegisteredInternal;
+
+        public static float Balance => _instance._balance;
 
 
-        public static event ClickRegisteredDelegate ClickRegistered
+        private event BalanceChangedDelegate BalanceChangedInternal;
+
+
+        public static event BalanceChangedDelegate BalanceChanged
         {
-            add => _instance.ClickRegisteredInternal += value;
-            remove => _instance.ClickRegisteredInternal -= value;
+            add => _instance.BalanceChangedInternal += value;
+            remove => _instance.BalanceChangedInternal -= value;
         }
 
 
@@ -48,24 +42,16 @@ namespace Game.Core
             _netGM = networkGameManager;
         }
 
-        public static void RegisterClick(Vector3 clickWorldPos)
-        {
-            if (!_instance._antiAutoClicker.ShouldRegisterClick())
-                return;
 
-            RegisterClickInternal(clickWorldPos);
+        public static void RegisterEarning(float earning)
+        {
+            var inst = _instance;
+            ref var balance = ref inst._balance;
+            balance += earning;
+            inst._netGM.SetPlayerScore(balance);
+            inst.BalanceChangedInternal?.Invoke(inst, balance, earning);
         }
 
 
-        private static void RegisterClickInternal(Vector3 clickWorldPos)
-        {
-            float bounty = CalculateClickReward();
-            _instance.ClickRegisteredInternal?.Invoke(bounty, clickWorldPos);
-        }
-
-        private static float CalculateClickReward()
-        {
-            return _instance._earnModifiersCollection.pro
-        }
     }
 }

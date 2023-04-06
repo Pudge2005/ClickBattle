@@ -1,5 +1,4 @@
-﻿using Game.Core;
-using Game.Visual;
+﻿using Game.Visual;
 using UnityEngine;
 
 namespace Game.Clicker
@@ -12,20 +11,20 @@ namespace Game.Clicker
         [SerializeField] private Vector3 _minDir = new Vector3(-0.5f, 1f, 0f).normalized;
         [SerializeField] private Vector3 _maxDir = new Vector3(0.5f, 1f, 0f).normalized;
 
-        private System.Random _directionRng = new();
+        private readonly System.Random _directionRng = new();
         private ClickTarget _clickTarget;
 
 
         private void Awake()
         {
             _clickTarget = GetComponent<ClickTarget>();
-
-            GameManager.ClickRegistered += HandleClickRegistered;
+            _clickTarget.ClickRegistered += HandleClickRegistered;
         }
 
-        private void HandleClickRegistered(float bounty, Vector3 clickWorldPos)
+
+        private void HandleClickRegistered(ClickTarget click, float bounty, Vector3 clickWorldPosition)
         {
-            var popInst = Instantiate(_popTextPrefab, clickWorldPos, Quaternion.identity);
+            var popInst = Instantiate(_popTextPrefab, clickWorldPosition, Quaternion.identity);
             popInst.UseWorldFlyDirection = true;
             popInst.FlyDirection = Vector3.Lerp(_minDir, _maxDir, (float)_directionRng.NextDouble());
             popInst.Text = Mathf.RoundToInt(bounty).ToString();

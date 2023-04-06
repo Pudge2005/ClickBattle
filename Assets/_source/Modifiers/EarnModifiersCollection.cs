@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Modifiers
@@ -35,28 +34,29 @@ namespace Game.Modifiers
         }
 
 
-        public void FillOptimizer(ModifierOptimizer optimizer)
+        public float Process(float source)
         {
             //negative income is not allowed
             if (_positiveModifierLvl < 0)
-                return;
+                return 0;
 
             var mod = _modifier.PositiveMods[_positiveModifierLvl];
             float flat = mod.FlatDelta;
             float mult = mod.MultiplierDelta;
 
-            if (_negativeModifierLvl < 0)
-                return;
+            if (_negativeModifierLvl >= 0)
+            {
+                mod = _modifier.NegativeMods[_negativeModifierLvl];
+                flat += mod.FlatDelta;
+                mult += mod.MultiplierDelta;
+            }
 
-            mod = _modifier.NegativeMods[_negativeModifierLvl];
-            flat += mod.FlatDelta;
-            mult += mod.MultiplierDelta;
+            float result = (source + flat) * (1f + mult);
 
-            if (flat > 0)
-                optimizer.AddFlatDelta(flat);
+            if (result < 0)
+                result = 0;
 
-            if (mult > 0)
-                optimizer.AddMultiplierDelta(mult);
+            return result;
         }
     }
 
@@ -67,88 +67,55 @@ namespace Game.Modifiers
 
     public sealed class EarnModifiersCollection : MonoBehaviour
     {
-        private sealed class Helper
+        /// <summary>
+        /// includes click (active) reward modifier
+        /// </summary>
+        private readonly Dictionary<RewardModifierSo, RewardModifierData> _earners = new();
+
+        private INetworkGameManager _networkGameManager;
+
+
+        public void Init(INetworkGameManager networkGameManager)
         {
-            private readonly Dictionary<RewardModifierSo, RewardModifierData> _modifiers = new();
-            private readonly ModifierOptimizer _optimizer = new();
-
-
-            public void SetPositiveLevel(RewardModifierSo modifier, int level)
-            {
-                SetLevel(modifier, level, true);
-            }
-
-            public void SetNegativeLevel(RewardModifierSo modifier, int level)
-            {
-                SetLevel(modifier, level, false);
-            }
-
-
-            public void SetLevel(RewardModifierSo modifier, int level, bool isPositive)
-            {
-                var data = GetOrCreate(modifier);
-
-                if (isPositive)
-                    data.PositiveModifierLvl = level;
-                else
-                    data.NegativeModifierLvl = level;
-
-                UpdateOptimizer();
-            }
-
-
-            public float ProcessReward(float source)
-            {
-#if UNITY_EDITOR
-                var v = _optimizer.ProcessValue(source);
-
-                if (v < 0)
-                    throw new Exception($"negative reward is not allowed: {source}, {v}");
-
-                return v;
-#else
-                return _optimizer.ProcessValue(source);
-#endif
-            }
-
-
-            private RewardModifierData GetOrCreate(RewardModifierSo rewardModifierSo)
-            {
-                if (_modifiers.TryGetValue(rewardModifierSo, out var data))
-                {
-                    return data;
-                }
-
-                return AddMod(rewardModifierSo);
-            }
-
-            private RewardModifierData AddMod(RewardModifierSo rewardModifierSo)
-            {
-                var data = new RewardModifierData();
-                data.Init(rewardModifierSo);
-                _modifiers.Add(rewardModifierSo, data);
-                return data;
-            }
-
-            private void UpdateOptimizer()
-            {
-                _optimizer.Reset();
-
-                foreach (var mod in _modifiers)
-                {
-                    mod.Value.FillOptimizer(_optimizer);
-                }
-            }
+            _networkGameManager = networkGameManager;
+            _networkGameManager.ModifierLevelChanged += HandleModifierLevelChanged;
         }
 
 
-        [SerializeField] private NetworkGameManager _networkGameManager;
+        public float ProcessReward(RewardModifierSo modifier, float value)
+        {
+            if (!_earners.TryGetValue(modifier, out var data))
+                return 0;
 
-        private readonly Helper _active = new();
-        private readonly Helper _passive = new();
+            return data.Process(value);
+        }
 
 
-        
-        //public float Process
+        public void ChangeModifierLevel(RewardModifierSo modifier, int lvl, bool isPositive)
+        {
+            HandleModifierLevelChanged(modifier, lvl, isPositive);
+        }
+
+        private void HandleModifierLevelChanged(RewardModifierSo modifier, int lvl, bool isPositive)
+        {
+            var data = GetOrCreateData(modifier);
+
+            if (isPositive)
+                data.PositiveModifierLvl = lvl;
+            else
+                data.NegativeModifierLvl = lvl;
+        }
+
+        private RewardModifierData GetOrCreateData(RewardModifierSo rewardModifierSo)
+        {
+            if (!_earners.TryGetValue(rewardModifierSo, out var data))
+            {
+                data = new();
+                data.Init(rewardModifierSo);
+                _earners.Add(rewardModifierSo, data);
+            }
+
+            return data;
+        }
     }
 }

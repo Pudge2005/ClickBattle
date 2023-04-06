@@ -22,9 +22,15 @@ namespace Game
         public event INetworkGameManager.ScoreChangedDelegate OpponentScoreChanged;
         public event INetworkGameManager.ModifierLevelChangedDelegate ModifierLevelChanged;
 
+
         public void ChangePlayerScore(float delta)
         {
             GetPlayerScoreNetVar(_playerIndex).Value += delta;
+        }
+
+        public void SetPlayerScore(float value)
+        {
+            GetPlayerScoreNetVar(_playerIndex).Value = value;
         }
 
         private NetworkVariable<float> GetPlayerScoreNetVar(int playerIndex)
