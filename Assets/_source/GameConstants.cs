@@ -3,7 +3,7 @@
     public static class GameConstants
     {
         public const string Root = "Game/";
-        public const string Modifiers = Root + nameof(Modifiers) + "/";
-
+        public const string Earners = Root + nameof(Earners) + "/";
+        public const string Modifiers = Earners + nameof(Modifiers) + "/";
     }
 }

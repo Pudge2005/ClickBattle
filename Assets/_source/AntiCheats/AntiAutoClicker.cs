@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Processors
+namespace Game.AntiCheats
 {
     public sealed class AntiAutoClicker : MonoBehaviour
     {
