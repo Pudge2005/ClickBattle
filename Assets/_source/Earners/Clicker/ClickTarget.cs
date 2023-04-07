@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Game.Earners.Clicker
 {
-    public sealed class ClickTarget : EarnerOnScene_OLD, IPointerDownHandler
+    public sealed class ClickTarget : Earner, IPointerDownHandler
     {
         public delegate void ClickRegisteredDelegate(ClickTarget click, float bounty, Vector3 clickWorldPosition);
 
@@ -20,10 +20,10 @@ namespace Game.Earners.Clicker
             if (!_antiAutoClicker.ShouldRegisterClick())
                 return;
 
-            var reward = GetReward();
+            var earning = ();
 
-            ClickRegistered?.Invoke(this, reward, eventData.pointerPressRaycast.worldPosition);
-            ConfirmEarning(reward);
+            ClickRegistered?.Invoke(this, earning, eventData.pointerPressRaycast.worldPosition);
+            ConfirmEarning(earning);
         }
     }
 }

@@ -184,5 +184,18 @@ namespace Game.Earners
             _data.SetOpponentNegativeLvl(lvl);
         }
 
+
+        public float GetEarning()
+        {
+            if (_data.PositiveLvl < 0)
+                return 0f;
+
+            var positive = _reference.PositiveModifiers[_data.PositiveLvl];
+        }
+
+        public void ConfirmEarning(float earning)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

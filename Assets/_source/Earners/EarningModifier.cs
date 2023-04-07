@@ -1,5 +1,4 @@
-﻿using Game.Modifiers;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Earners
 {

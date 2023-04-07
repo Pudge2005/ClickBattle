@@ -16,5 +16,9 @@ namespace Game.Earners
 
         bool TrySellNegativeLevels(int lvlsAmount);
 
+
+        float GetEarning();
+
+        void ConfirmEarning(float earning);
     }
 }
