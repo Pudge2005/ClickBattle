@@ -10,23 +10,23 @@ namespace Game.Core
 
         private static GameManager _instance;
 
-        private INetworkGameManager_OLD _netGM;
+        private INetworkGameManager _netGM;
         private float _winBalance;
         private float _balance;
 
 
-        public static INetworkGameManager_OLD NetworkGameManager => _instance._netGM;
+        public static INetworkGameManager NetworkGameManager => _instance._netGM;
         public static float WinBalance => _instance._winBalance;
         public static float Balance => _instance._balance;
 
 
-        private event System.Action<INetworkGameManager_OLD> NetworkGameManagerInitedInternal;
+        private event System.Action<INetworkGameManager> NetworkGameManagerInitedInternal;
 
         private event BalanceChangedDelegate BalanceChangedInternal;
 
 
 
-        public static event System.Action<INetworkGameManager_OLD> NetworkGameManagerInited
+        public static event System.Action<INetworkGameManager> NetworkGameManagerInited
         {
             add => _instance.NetworkGameManagerInitedInternal += value;
             remove => _instance.NetworkGameManagerInitedInternal -= value;
@@ -46,7 +46,7 @@ namespace Game.Core
         }
 
 
-        public void Init(INetworkGameManager_OLD networkGameManager, float winBalance)
+        public void Init(INetworkGameManager networkGameManager, float winBalance)
         {
             _netGM = networkGameManager;
             _winBalance = winBalance;
@@ -95,7 +95,7 @@ namespace Game.Core
             var inst = _instance;
             ref var balance = ref inst._balance;
             balance += delta;
-            inst._netGM.SetPlayerScore(balance);
+            inst._netGM.SetPlayerBalance(balance);
             inst.BalanceChangedInternal?.Invoke(inst, balance, delta);
         }
 

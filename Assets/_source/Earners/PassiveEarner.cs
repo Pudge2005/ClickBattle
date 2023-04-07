@@ -2,7 +2,7 @@
 
 namespace Game.Earners
 {
-    public sealed class PassiveEarner : EarnerOnScene_OLD
+    public sealed class PassiveEarner : Earner
     {
         [SerializeField, Min(0.01f)] private float _tickrate = 10f;
 
@@ -16,7 +16,7 @@ namespace Game.Earners
 
             _cdLeft = 1f / _tickrate;
 
-            var earnPerSec = GetReward();
+            var earnPerSec = GetEarning();
             var tickEarn = earnPerSec / _tickrate;
             ConfirmEarning(tickEarn);
         }

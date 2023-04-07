@@ -1,0 +1,1020 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df998d9120c0fe4799dbb537cadad67, type: 3}
+  m_Name: Earner 2
+  m_EditorClassIdentifier: 
+  _soDatabaseID: 2
+  _metaInfo:
+    _name: "\u0417\u0430\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0442\u0435\u043B\u044C
+      2"
+    _description: 
+    _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _positiveModsCreator:
+    _levelsCount: 100
+    _flatCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 5
+        inSlope: 5574.668
+        outSlope: 5574.668
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.061804958
+      - serializedVersion: 3
+        time: 1
+        value: 100000
+        inSlope: 271575.44
+        outSlope: 271575.44
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.028980494
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _multCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 60.72833
+        outSlope: 60.72833
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.048543688
+      - serializedVersion: 3
+        time: 1
+        value: 50
+        inSlope: 124.36721
+        outSlope: 124.36721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.021844685
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _buyPriceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 50
+        inSlope: 8999950
+        outSlope: 8999950
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 9000000
+        inSlope: 8999950
+        outSlope: 8999950
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _sellPriceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 10
+        inSlope: 89990
+        outSlope: 89990
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 90000
+        inSlope: 89990
+        outSlope: 89990
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _createForPositives: 0
+  _negativeModsCreator:
+    _levelsCount: 100
+    _flatCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 5
+        inSlope: 5574.668
+        outSlope: 5574.668
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.061804958
+      - serializedVersion: 3
+        time: 1
+        value: 100000
+        inSlope: 271575.44
+        outSlope: 271575.44
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.028980494
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _multCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 60.72833
+        outSlope: 60.72833
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.048543688
+      - serializedVersion: 3
+        time: 1
+        value: 50
+        inSlope: 124.36721
+        outSlope: 124.36721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.021844685
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _buyPriceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 50
+        inSlope: 8999950
+        outSlope: 8999950
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 9000000
+        inSlope: 8999950
+        outSlope: 8999950
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _sellPriceCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 10
+        inSlope: 89990
+        outSlope: 89990
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 90000
+        inSlope: 89990
+        outSlope: 89990
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _createForNegatives: 0
+  _positiveModifiers:
+  - _flat: 5
+    _mult: 0
+    _buyPrice: 50
+    _sellPrice: 10
+  - _flat: 63.15037
+    _mult: 0.60372823
+    _buyPrice: 90958.586
+    _sellPrice: 918.98987
+  - _flat: 125.30001
+    _mult: 1.1884288
+    _buyPrice: 181867.17
+    _sellPrice: 1827.9797
+  - _flat: 191.92607
+    _mult: 1.7546278
+    _buyPrice: 272775.78
+    _sellPrice: 2736.9697
+  - _flat: 263.50565
+    _mult: 2.3028514
+    _buyPrice: 363684.34
+    _sellPrice: 3645.9595
+  - _flat: 340.5159
+    _mult: 2.833626
+    _buyPrice: 454592.9
+    _sellPrice: 4554.949
+  - _flat: 423.43396
+    _mult: 3.347478
+    _buyPrice: 545501.56
+    _sellPrice: 5463.9395
+  - _flat: 512.7369
+    _mult: 3.8449328
+    _buyPrice: 636410.06
+    _sellPrice: 6372.929
+  - _flat: 608.902
+    _mult: 4.3265176
+    _buyPrice: 727318.7
+    _sellPrice: 7281.919
+  - _flat: 712.40625
+    _mult: 4.792758
+    _buyPrice: 818227.3
+    _sellPrice: 8190.909
+  - _flat: 823.72675
+    _mult: 5.2441797
+    _buyPrice: 909135.8
+    _sellPrice: 9099.898
+  - _flat: 943.3408
+    _mult: 5.6813107
+    _buyPrice: 1000044.44
+    _sellPrice: 10008.889
+  - _flat: 1071.7255
+    _mult: 6.1046753
+    _buyPrice: 1090953.1
+    _sellPrice: 10917.879
+  - _flat: 1209.3578
+    _mult: 6.5148
+    _buyPrice: 1181861.6
+    _sellPrice: 11826.868
+  - _flat: 1356.7148
+    _mult: 6.912212
+    _buyPrice: 1272770.1
+    _sellPrice: 12735.858
+  - _flat: 1514.2742
+    _mult: 7.2974377
+    _buyPrice: 1363678.9
+    _sellPrice: 13644.849
+  - _flat: 1682.5125
+    _mult: 7.6710014
+    _buyPrice: 1454587.4
+    _sellPrice: 14553.838
+  - _flat: 1861.9069
+    _mult: 8.033431
+    _buyPrice: 1545495.9
+    _sellPrice: 15462.828
+  - _flat: 2052.935
+    _mult: 8.385251
+    _buyPrice: 1636404.6
+    _sellPrice: 16371.818
+  - _flat: 2256.0735
+    _mult: 8.72699
+    _buyPrice: 1727313.1
+    _sellPrice: 17280.809
+  - _flat: 2471.7993
+    _mult: 9.059173
+    _buyPrice: 1818221.6
+    _sellPrice: 18189.797
+  - _flat: 2700.5906
+    _mult: 9.382325
+    _buyPrice: 1909130.4
+    _sellPrice: 19098.79
+  - _flat: 2942.923
+    _mult: 9.696974
+    _buyPrice: 2000038.9
+    _sellPrice: 20007.777
+  - _flat: 3199.2747
+    _mult: 10.003646
+    _buyPrice: 2090947.5
+    _sellPrice: 20916.768
+  - _flat: 3470.123
+    _mult: 10.302866
+    _buyPrice: 2181856.2
+    _sellPrice: 21825.758
+  - _flat: 3755.9438
+    _mult: 10.595161
+    _buyPrice: 2272764.5
+    _sellPrice: 22734.746
+  - _flat: 4057.2158
+    _mult: 10.881058
+    _buyPrice: 2363673.2
+    _sellPrice: 23643.736
+  - _flat: 4374.4155
+    _mult: 11.161082
+    _buyPrice: 2454582
+    _sellPrice: 24552.729
+  - _flat: 4708.0186
+    _mult: 11.43576
+    _buyPrice: 2545490.2
+    _sellPrice: 25461.717
+  - _flat: 5058.5054
+    _mult: 11.705615
+    _buyPrice: 2636399
+    _sellPrice: 26370.707
+  - _flat: 5426.35
+    _mult: 11.971179
+    _buyPrice: 2727307.8
+    _sellPrice: 27279.697
+  - _flat: 5812.0312
+    _mult: 12.232974
+    _buyPrice: 2818216
+    _sellPrice: 28188.686
+  - _flat: 6216.0254
+    _mult: 12.491529
+    _buyPrice: 2909124.8
+    _sellPrice: 29097.676
+  - _flat: 6638.81
+    _mult: 12.747367
+    _buyPrice: 3000033.5
+    _sellPrice: 30006.668
+  - _flat: 7080.861
+    _mult: 13.001015
+    _buyPrice: 3090941.8
+    _sellPrice: 30915.656
+  - _flat: 7542.658
+    _mult: 13.253001
+    _buyPrice: 3181850.5
+    _sellPrice: 31824.646
+  - _flat: 8024.6772
+    _mult: 13.503851
+    _buyPrice: 3272759.2
+    _sellPrice: 32733.637
+  - _flat: 8527.393
+    _mult: 13.754089
+    _buyPrice: 3363667.5
+    _sellPrice: 33642.625
+  - _flat: 9051.287
+    _mult: 14.004243
+    _buyPrice: 3454576.2
+    _sellPrice: 34551.617
+  - _flat: 9596.834
+    _mult: 14.254838
+    _buyPrice: 3545485
+    _sellPrice: 35460.605
+  - _flat: 10164.51
+    _mult: 14.506401
+    _buyPrice: 3636393.2
+    _sellPrice: 36369.594
+  - _flat: 10754.794
+    _mult: 14.7594595
+    _buyPrice: 3727302
+    _sellPrice: 37278.586
+  - _flat: 11368.164
+    _mult: 15.014539
+    _buyPrice: 3818210.8
+    _sellPrice: 38187.58
+  - _flat: 12005.093
+    _mult: 15.272162
+    _buyPrice: 3909119.2
+    _sellPrice: 39096.566
+  - _flat: 12666.0625
+    _mult: 15.532861
+    _buyPrice: 4000027.8
+    _sellPrice: 40005.555
+  - _flat: 13351.548
+    _mult: 15.797157
+    _buyPrice: 4090936.5
+    _sellPrice: 40914.547
+  - _flat: 14062.024
+    _mult: 16.065578
+    _buyPrice: 4181845
+    _sellPrice: 41823.535
+  - _flat: 14797.974
+    _mult: 16.338652
+    _buyPrice: 4272753.5
+    _sellPrice: 42732.527
+  - _flat: 15559.871
+    _mult: 16.616903
+    _buyPrice: 4363662.5
+    _sellPrice: 43641.516
+  - _flat: 16348.189
+    _mult: 16.900858
+    _buyPrice: 4454570.5
+    _sellPrice: 44550.504
+  - _flat: 17163.41
+    _mult: 17.191042
+    _buyPrice: 4545479
+    _sellPrice: 45459.492
+  - _flat: 18006.012
+    _mult: 17.487986
+    _buyPrice: 4636387.5
+    _sellPrice: 46368.484
+  - _flat: 18876.469
+    _mult: 17.792208
+    _buyPrice: 4727296.5
+    _sellPrice: 47277.473
+  - _flat: 19775.26
+    _mult: 18.104239
+    _buyPrice: 4818205
+    _sellPrice: 48186.465
+  - _flat: 20702.857
+    _mult: 18.424606
+    _buyPrice: 4909114
+    _sellPrice: 49095.457
+  - _flat: 21659.748
+    _mult: 18.753834
+    _buyPrice: 5000022.5
+    _sellPrice: 50004.445
+  - _flat: 22646.393
+    _mult: 19.09245
+    _buyPrice: 5090930.5
+    _sellPrice: 50913.434
+  - _flat: 23663.287
+    _mult: 19.440977
+    _buyPrice: 5181839.5
+    _sellPrice: 51822.42
+  - _flat: 24710.898
+    _mult: 19.799944
+    _buyPrice: 5272748
+    _sellPrice: 52731.414
+  - _flat: 25789.709
+    _mult: 20.169878
+    _buyPrice: 5363656.5
+    _sellPrice: 53640.406
+  - _flat: 26900.188
+    _mult: 20.551306
+    _buyPrice: 5454565.5
+    _sellPrice: 54549.395
+  - _flat: 28042.82
+    _mult: 20.94475
+    _buyPrice: 5545474
+    _sellPrice: 55458.387
+  - _flat: 29218.074
+    _mult: 21.350739
+    _buyPrice: 5636382
+    _sellPrice: 56367.37
+  - _flat: 30426.434
+    _mult: 21.769794
+    _buyPrice: 5727291
+    _sellPrice: 57276.363
+  - _flat: 31668.379
+    _mult: 22.20245
+    _buyPrice: 5818199.5
+    _sellPrice: 58185.35
+  - _flat: 32944.383
+    _mult: 22.649231
+    _buyPrice: 5909108
+    _sellPrice: 59094.344
+  - _flat: 34254.92
+    _mult: 23.11066
+    _buyPrice: 6000017
+    _sellPrice: 60003.336
+  - _flat: 35600.46
+    _mult: 23.587261
+    _buyPrice: 6090925
+    _sellPrice: 60912.32
+  - _flat: 36981.508
+    _mult: 24.079565
+    _buyPrice: 6181833.5
+    _sellPrice: 61821.312
+  - _flat: 38398.516
+    _mult: 24.5881
+    _buyPrice: 6272742.5
+    _sellPrice: 62730.3
+  - _flat: 39851.97
+    _mult: 25.113388
+    _buyPrice: 6363651
+    _sellPrice: 63639.293
+  - _flat: 41342.34
+    _mult: 25.655954
+    _buyPrice: 6454559.5
+    _sellPrice: 64548.285
+  - _flat: 42870.113
+    _mult: 26.216331
+    _buyPrice: 6545468.5
+    _sellPrice: 65457.273
+  - _flat: 44435.754
+    _mult: 26.795033
+    _buyPrice: 6636376.5
+    _sellPrice: 66366.26
+  - _flat: 46039.754
+    _mult: 27.392601
+    _buyPrice: 6727285
+    _sellPrice: 67275.25
+  - _flat: 47682.586
+    _mult: 28.009554
+    _buyPrice: 6818194
+    _sellPrice: 68184.24
+  - _flat: 49364.727
+    _mult: 28.646412
+    _buyPrice: 6909102.5
+    _sellPrice: 69093.234
+  - _flat: 51086.65
+    _mult: 29.303713
+    _buyPrice: 7000011
+    _sellPrice: 70002.23
+  - _flat: 52848.832
+    _mult: 29.981974
+    _buyPrice: 7090920
+    _sellPrice: 70911.21
+  - _flat: 54651.74
+    _mult: 30.681726
+    _buyPrice: 7181828
+    _sellPrice: 71820.2
+  - _flat: 56495.883
+    _mult: 31.403494
+    _buyPrice: 7272736.5
+    _sellPrice: 72729.19
+  - _flat: 58381.71
+    _mult: 32.147804
+    _buyPrice: 7363645.5
+    _sellPrice: 73638.18
+  - _flat: 60309.71
+    _mult: 32.915184
+    _buyPrice: 7454554
+    _sellPrice: 74547.17
+  - _flat: 62280.363
+    _mult: 33.706158
+    _buyPrice: 7545463
+    _sellPrice: 75456.164
+  - _flat: 64294.13
+    _mult: 34.52126
+    _buyPrice: 7636371.5
+    _sellPrice: 76365.16
+  - _flat: 66351.49
+    _mult: 35.360992
+    _buyPrice: 7727279.5
+    _sellPrice: 77274.14
+  - _flat: 68452.95
+    _mult: 36.22591
+    _buyPrice: 7818188.5
+    _sellPrice: 78183.13
+  - _flat: 70598.95
+    _mult: 37.116524
+    _buyPrice: 7909097
+    _sellPrice: 79092.12
+  - _flat: 72789.984
+    _mult: 38.033367
+    _buyPrice: 8000005.5
+    _sellPrice: 80001.11
+  - _flat: 75026.54
+    _mult: 38.97696
+    _buyPrice: 8090914.5
+    _sellPrice: 80910.1
+  - _flat: 77309.08
+    _mult: 39.94783
+    _buyPrice: 8181823
+    _sellPrice: 81819.09
+  - _flat: 79638.055
+    _mult: 40.946495
+    _buyPrice: 8272731
+    _sellPrice: 82728.08
+  - _flat: 82014
+    _mult: 41.973507
+    _buyPrice: 8363640
+    _sellPrice: 83637.07
+  - _flat: 84437.36
+    _mult: 43.02937
+    _buyPrice: 8454548
+    _sellPrice: 84546.06
+  - _flat: 86908.625
+    _mult: 44.114613
+    _buyPrice: 8545457
+    _sellPrice: 85455.055
+  - _flat: 89428.25
+    _mult: 45.229767
+    _buyPrice: 8636366
+    _sellPrice: 86364.04
+  - _flat: 91996.73
+    _mult: 46.375355
+    _buyPrice: 8727275
+    _sellPrice: 87273.03
+  - _flat: 94614.52
+    _mult: 47.551907
+    _buyPrice: 8818183
+    _sellPrice: 88182.016
+  - _flat: 97282.125
+    _mult: 48.759945
+    _buyPrice: 8909091
+    _sellPrice: 89091.01
+  - _flat: 100000
+    _mult: 50
+    _buyPrice: 9000000
+    _sellPrice: 90000
+  _negativeModifiers:
+  - _flat: 5
+    _mult: 0
+    _buyPrice: 50
+    _sellPrice: 10
+  - _flat: 63.15037
+    _mult: 0.60372823
+    _buyPrice: 90958.586
+    _sellPrice: 918.98987
+  - _flat: 125.30001
+    _mult: 1.1884288
+    _buyPrice: 181867.17
+    _sellPrice: 1827.9797
+  - _flat: 191.92607
+    _mult: 1.7546278
+    _buyPrice: 272775.78
+    _sellPrice: 2736.9697
+  - _flat: 263.50565
+    _mult: 2.3028514
+    _buyPrice: 363684.34
+    _sellPrice: 3645.9595
+  - _flat: 340.5159
+    _mult: 2.833626
+    _buyPrice: 454592.9
+    _sellPrice: 4554.949
+  - _flat: 423.43396
+    _mult: 3.347478
+    _buyPrice: 545501.56
+    _sellPrice: 5463.9395
+  - _flat: 512.7369
+    _mult: 3.8449328
+    _buyPrice: 636410.06
+    _sellPrice: 6372.929
+  - _flat: 608.902
+    _mult: 4.3265176
+    _buyPrice: 727318.7
+    _sellPrice: 7281.919
+  - _flat: 712.40625
+    _mult: 4.792758
+    _buyPrice: 818227.3
+    _sellPrice: 8190.909
+  - _flat: 823.72675
+    _mult: 5.2441797
+    _buyPrice: 909135.8
+    _sellPrice: 9099.898
+  - _flat: 943.3408
+    _mult: 5.6813107
+    _buyPrice: 1000044.44
+    _sellPrice: 10008.889
+  - _flat: 1071.7255
+    _mult: 6.1046753
+    _buyPrice: 1090953.1
+    _sellPrice: 10917.879
+  - _flat: 1209.3578
+    _mult: 6.5148
+    _buyPrice: 1181861.6
+    _sellPrice: 11826.868
+  - _flat: 1356.7148
+    _mult: 6.912212
+    _buyPrice: 1272770.1
+    _sellPrice: 12735.858
+  - _flat: 1514.2742
+    _mult: 7.2974377
+    _buyPrice: 1363678.9
+    _sellPrice: 13644.849
+  - _flat: 1682.5125
+    _mult: 7.6710014
+    _buyPrice: 1454587.4
+    _sellPrice: 14553.838
+  - _flat: 1861.9069
+    _mult: 8.033431
+    _buyPrice: 1545495.9
+    _sellPrice: 15462.828
+  - _flat: 2052.935
+    _mult: 8.385251
+    _buyPrice: 1636404.6
+    _sellPrice: 16371.818
+  - _flat: 2256.0735
+    _mult: 8.72699
+    _buyPrice: 1727313.1
+    _sellPrice: 17280.809
+  - _flat: 2471.7993
+    _mult: 9.059173
+    _buyPrice: 1818221.6
+    _sellPrice: 18189.797
+  - _flat: 2700.5906
+    _mult: 9.382325
+    _buyPrice: 1909130.4
+    _sellPrice: 19098.79
+  - _flat: 2942.923
+    _mult: 9.696974
+    _buyPrice: 2000038.9
+    _sellPrice: 20007.777
+  - _flat: 3199.2747
+    _mult: 10.003646
+    _buyPrice: 2090947.5
+    _sellPrice: 20916.768
+  - _flat: 3470.123
+    _mult: 10.302866
+    _buyPrice: 2181856.2
+    _sellPrice: 21825.758
+  - _flat: 3755.9438
+    _mult: 10.595161
+    _buyPrice: 2272764.5
+    _sellPrice: 22734.746
+  - _flat: 4057.2158
+    _mult: 10.881058
+    _buyPrice: 2363673.2
+    _sellPrice: 23643.736
+  - _flat: 4374.4155
+    _mult: 11.161082
+    _buyPrice: 2454582
+    _sellPrice: 24552.729
+  - _flat: 4708.0186
+    _mult: 11.43576
+    _buyPrice: 2545490.2
+    _sellPrice: 25461.717
+  - _flat: 5058.5054
+    _mult: 11.705615
+    _buyPrice: 2636399
+    _sellPrice: 26370.707
+  - _flat: 5426.35
+    _mult: 11.971179
+    _buyPrice: 2727307.8
+    _sellPrice: 27279.697
+  - _flat: 5812.0312
+    _mult: 12.232974
+    _buyPrice: 2818216
+    _sellPrice: 28188.686
+  - _flat: 6216.0254
+    _mult: 12.491529
+    _buyPrice: 2909124.8
+    _sellPrice: 29097.676
+  - _flat: 6638.81
+    _mult: 12.747367
+    _buyPrice: 3000033.5
+    _sellPrice: 30006.668
+  - _flat: 7080.861
+    _mult: 13.001015
+    _buyPrice: 3090941.8
+    _sellPrice: 30915.656
+  - _flat: 7542.658
+    _mult: 13.253001
+    _buyPrice: 3181850.5
+    _sellPrice: 31824.646
+  - _flat: 8024.6772
+    _mult: 13.503851
+    _buyPrice: 3272759.2
+    _sellPrice: 32733.637
+  - _flat: 8527.393
+    _mult: 13.754089
+    _buyPrice: 3363667.5
+    _sellPrice: 33642.625
+  - _flat: 9051.287
+    _mult: 14.004243
+    _buyPrice: 3454576.2
+    _sellPrice: 34551.617
+  - _flat: 9596.834
+    _mult: 14.254838
+    _buyPrice: 3545485
+    _sellPrice: 35460.605
+  - _flat: 10164.51
+    _mult: 14.506401
+    _buyPrice: 3636393.2
+    _sellPrice: 36369.594
+  - _flat: 10754.794
+    _mult: 14.7594595
+    _buyPrice: 3727302
+    _sellPrice: 37278.586
+  - _flat: 11368.164
+    _mult: 15.014539
+    _buyPrice: 3818210.8
+    _sellPrice: 38187.58
+  - _flat: 12005.093
+    _mult: 15.272162
+    _buyPrice: 3909119.2
+    _sellPrice: 39096.566
+  - _flat: 12666.0625
+    _mult: 15.532861
+    _buyPrice: 4000027.8
+    _sellPrice: 40005.555
+  - _flat: 13351.548
+    _mult: 15.797157
+    _buyPrice: 4090936.5
+    _sellPrice: 40914.547
+  - _flat: 14062.024
+    _mult: 16.065578
+    _buyPrice: 4181845
+    _sellPrice: 41823.535
+  - _flat: 14797.974
+    _mult: 16.338652
+    _buyPrice: 4272753.5
+    _sellPrice: 42732.527
+  - _flat: 15559.871
+    _mult: 16.616903
+    _buyPrice: 4363662.5
+    _sellPrice: 43641.516
+  - _flat: 16348.189
+    _mult: 16.900858
+    _buyPrice: 4454570.5
+    _sellPrice: 44550.504
+  - _flat: 17163.41
+    _mult: 17.191042
+    _buyPrice: 4545479
+    _sellPrice: 45459.492
+  - _flat: 18006.012
+    _mult: 17.487986
+    _buyPrice: 4636387.5
+    _sellPrice: 46368.484
+  - _flat: 18876.469
+    _mult: 17.792208
+    _buyPrice: 4727296.5
+    _sellPrice: 47277.473
+  - _flat: 19775.26
+    _mult: 18.104239
+    _buyPrice: 4818205
+    _sellPrice: 48186.465
+  - _flat: 20702.857
+    _mult: 18.424606
+    _buyPrice: 4909114
+    _sellPrice: 49095.457
+  - _flat: 21659.748
+    _mult: 18.753834
+    _buyPrice: 5000022.5
+    _sellPrice: 50004.445
+  - _flat: 22646.393
+    _mult: 19.09245
+    _buyPrice: 5090930.5
+    _sellPrice: 50913.434
+  - _flat: 23663.287
+    _mult: 19.440977
+    _buyPrice: 5181839.5
+    _sellPrice: 51822.42
+  - _flat: 24710.898
+    _mult: 19.799944
+    _buyPrice: 5272748
+    _sellPrice: 52731.414
+  - _flat: 25789.709
+    _mult: 20.169878
+    _buyPrice: 5363656.5
+    _sellPrice: 53640.406
+  - _flat: 26900.188
+    _mult: 20.551306
+    _buyPrice: 5454565.5
+    _sellPrice: 54549.395
+  - _flat: 28042.82
+    _mult: 20.94475
+    _buyPrice: 5545474
+    _sellPrice: 55458.387
+  - _flat: 29218.074
+    _mult: 21.350739
+    _buyPrice: 5636382
+    _sellPrice: 56367.37
+  - _flat: 30426.434
+    _mult: 21.769794
+    _buyPrice: 5727291
+    _sellPrice: 57276.363
+  - _flat: 31668.379
+    _mult: 22.20245
+    _buyPrice: 5818199.5
+    _sellPrice: 58185.35
+  - _flat: 32944.383
+    _mult: 22.649231
+    _buyPrice: 5909108
+    _sellPrice: 59094.344
+  - _flat: 34254.92
+    _mult: 23.11066
+    _buyPrice: 6000017
+    _sellPrice: 60003.336
+  - _flat: 35600.46
+    _mult: 23.587261
+    _buyPrice: 6090925
+    _sellPrice: 60912.32
+  - _flat: 36981.508
+    _mult: 24.079565
+    _buyPrice: 6181833.5
+    _sellPrice: 61821.312
+  - _flat: 38398.516
+    _mult: 24.5881
+    _buyPrice: 6272742.5
+    _sellPrice: 62730.3
+  - _flat: 39851.97
+    _mult: 25.113388
+    _buyPrice: 6363651
+    _sellPrice: 63639.293
+  - _flat: 41342.34
+    _mult: 25.655954
+    _buyPrice: 6454559.5
+    _sellPrice: 64548.285
+  - _flat: 42870.113
+    _mult: 26.216331
+    _buyPrice: 6545468.5
+    _sellPrice: 65457.273
+  - _flat: 44435.754
+    _mult: 26.795033
+    _buyPrice: 6636376.5
+    _sellPrice: 66366.26
+  - _flat: 46039.754
+    _mult: 27.392601
+    _buyPrice: 6727285
+    _sellPrice: 67275.25
+  - _flat: 47682.586
+    _mult: 28.009554
+    _buyPrice: 6818194
+    _sellPrice: 68184.24
+  - _flat: 49364.727
+    _mult: 28.646412
+    _buyPrice: 6909102.5
+    _sellPrice: 69093.234
+  - _flat: 51086.65
+    _mult: 29.303713
+    _buyPrice: 7000011
+    _sellPrice: 70002.23
+  - _flat: 52848.832
+    _mult: 29.981974
+    _buyPrice: 7090920
+    _sellPrice: 70911.21
+  - _flat: 54651.74
+    _mult: 30.681726
+    _buyPrice: 7181828
+    _sellPrice: 71820.2
+  - _flat: 56495.883
+    _mult: 31.403494
+    _buyPrice: 7272736.5
+    _sellPrice: 72729.19
+  - _flat: 58381.71
+    _mult: 32.147804
+    _buyPrice: 7363645.5
+    _sellPrice: 73638.18
+  - _flat: 60309.71
+    _mult: 32.915184
+    _buyPrice: 7454554
+    _sellPrice: 74547.17
+  - _flat: 62280.363
+    _mult: 33.706158
+    _buyPrice: 7545463
+    _sellPrice: 75456.164
+  - _flat: 64294.13
+    _mult: 34.52126
+    _buyPrice: 7636371.5
+    _sellPrice: 76365.16
+  - _flat: 66351.49
+    _mult: 35.360992
+    _buyPrice: 7727279.5
+    _sellPrice: 77274.14
+  - _flat: 68452.95
+    _mult: 36.22591
+    _buyPrice: 7818188.5
+    _sellPrice: 78183.13
+  - _flat: 70598.95
+    _mult: 37.116524
+    _buyPrice: 7909097
+    _sellPrice: 79092.12
+  - _flat: 72789.984
+    _mult: 38.033367
+    _buyPrice: 8000005.5
+    _sellPrice: 80001.11
+  - _flat: 75026.54
+    _mult: 38.97696
+    _buyPrice: 8090914.5
+    _sellPrice: 80910.1
+  - _flat: 77309.08
+    _mult: 39.94783
+    _buyPrice: 8181823
+    _sellPrice: 81819.09
+  - _flat: 79638.055
+    _mult: 40.946495
+    _buyPrice: 8272731
+    _sellPrice: 82728.08
+  - _flat: 82014
+    _mult: 41.973507
+    _buyPrice: 8363640
+    _sellPrice: 83637.07
+  - _flat: 84437.36
+    _mult: 43.02937
+    _buyPrice: 8454548
+    _sellPrice: 84546.06
+  - _flat: 86908.625
+    _mult: 44.114613
+    _buyPrice: 8545457
+    _sellPrice: 85455.055
+  - _flat: 89428.25
+    _mult: 45.229767
+    _buyPrice: 8636366
+    _sellPrice: 86364.04
+  - _flat: 91996.73
+    _mult: 46.375355
+    _buyPrice: 8727275
+    _sellPrice: 87273.03
+  - _flat: 94614.52
+    _mult: 47.551907
+    _buyPrice: 8818183
+    _sellPrice: 88182.016
+  - _flat: 97282.125
+    _mult: 48.759945
+    _buyPrice: 8909091
+    _sellPrice: 89091.01
+  - _flat: 100000
+    _mult: 50
+    _buyPrice: 9000000
+    _sellPrice: 90000

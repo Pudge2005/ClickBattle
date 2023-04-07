@@ -7,31 +7,88 @@ namespace Game.Earners
     {
         [SerializeField] private EarnerSo _reference;
 
-        private EarnerData _data;
+        private int _maxPositiveLvl;
+        private int _maxNegLvl;
+
+        private int _posLvl = -1;
+        private int _negLvl = -1;
+        private int _opNegLvl = -1;
 
 
-        public IReadOnlyEarnerData Data => _data;
+        public EarnerSo EarnerSo => _reference;
+
+        public int MaxPositiveLvl => _maxPositiveLvl;
+        public int MaxNegativeLvl => _maxNegLvl;
+
+        public int PositiveLvl => _posLvl;
+        public int NegativeLvl => _negLvl;
+        public int OpponentNegativeLvl => _opNegLvl;
 
 
-        public void InitEarner(EarnerSo earnerSo)
+        public event IEarner.LvlChangedDelegate PositiveLvlChanged;
+        public event IEarner.LvlChangedDelegate NegativeLvlChanged;
+        public event IEarner.LvlChangedDelegate OpponentNegativeLvlChanged;
+
+
+        protected virtual void Start()
         {
-            //lined up for testing
-            //_reference = earnerSo;
+            Init(_reference);
+        }
+
+        public void Init(EarnerSo so)
+        {
+            _reference = so;
+            _maxPositiveLvl = so.PositiveModifiers.Count - 1;
+            _maxNegLvl = so.NegativeModifiers.Count - 1;
+        }
+
+
+        public void SetPositiveLvl(int lvl)
+        {
+            if (lvl == _posLvl)
+                return;
+
+            var prev = _posLvl;
+            _posLvl = lvl;
+
+            PositiveLvlChanged?.Invoke(this, prev, lvl);
+        }
+
+        public void SetNegativeLvl(int lvl)
+        {
+            if (lvl == _negLvl)
+                return;
+
+            var prev = _negLvl;
+            _negLvl = lvl;
+
+            NegativeLvlChanged?.Invoke(this, prev, lvl);
+        }
+
+        public void SetOpponentNegativeLvl(int lvl)
+        {
+            if (lvl == _opNegLvl)
+                return;
+
+            var prev = _opNegLvl;
+            _opNegLvl = lvl;
+
+            OpponentNegativeLvlChanged?.Invoke(this, prev, lvl);
         }
 
 
         internal bool CanBuyPositiveLevels(int lvls, out float totalCost)
         {
-            int desiredLvl = _data.PositiveLvl + lvls;
+            int desiredLvl = _posLvl + lvls;
             totalCost = 0;
 
-            if (desiredLvl > _data.MaxPositiveLvl)
+            if (desiredLvl > MaxPositiveLvl)
                 return false;
 
             float balance = GameManager.Balance;
             var mods = _reference.PositiveModifiers;
 
-            for (int i = 0, lvl = _data.PositiveLvl + 1; i < lvls; ++i, ++lvl)
+            for (int i = 0, lvl = _posLvl + 1; i < lvls; ++i, ++lvl)
             {
                 totalCost += mods[lvl].BuyPrice;
 
@@ -53,7 +110,7 @@ namespace Game.Earners
                 return false;
 
             GameManager.Spend(totalCost);
-            SetPositiveLvl(_data.PositiveLvl + lvls);
+            SetPositiveLvl(_posLvl + lvls);
 
             return true;
         }
@@ -62,14 +119,14 @@ namespace Game.Earners
         internal bool CanSellPositiveLevels(int lvlsAmount, out float refund)
         {
             refund = 0;
-            int desiredLvl = _data.PositiveLvl - lvlsAmount;
+            int desiredLvl = _posLvl - lvlsAmount;
 
             if (desiredLvl < -1)
                 return false;
 
             var mods = _reference.PositiveModifiers;
 
-            for (int i = 0, lvl = _data.PositiveLvl + 1; i < lvlsAmount; ++i, ++lvl)
+            for (int i = 0, lvl = _posLvl + 1; i < lvlsAmount; ++i, ++lvl)
             {
                 refund += mods[lvl].SellPrice;
             }
@@ -88,7 +145,7 @@ namespace Game.Earners
                 return false;
 
             GameManager.Earn(refund);
-            SetPositiveLvl(_data.PositiveLvl - lvls);
+            SetPositiveLvl(_posLvl - lvls);
             return true;
         }
 
@@ -96,15 +153,15 @@ namespace Game.Earners
         internal bool CanBuyNegativeLevelsForOpponent(int lvls, out float totalCost)
         {
             totalCost = 0;
-            int desiredLvl = _data.OpponentNegativeLvl + lvls;
+            int desiredLvl = _opNegLvl + lvls;
 
-            if (desiredLvl > _data.MaxNegativeLvl)
+            if (desiredLvl > _maxNegLvl)
                 return false;
 
             float balance = GameManager.Balance;
             var mods = _reference.NegativeModifiers;
 
-            for (int i = 0, lvl = _data.OpponentNegativeLvl + 1; i < lvls; ++i, ++lvl)
+            for (int i = 0, lvl = _opNegLvl + 1; i < lvls; ++i, ++lvl)
             {
                 totalCost += mods[lvl].BuyPrice;
 
@@ -126,7 +183,7 @@ namespace Game.Earners
                 return false;
 
             GameManager.Spend(totalCost);
-            SetOpponentNegativeLvl(_data.OpponentNegativeLvl + lvls);
+            SetOpponentNegativeLvl(_opNegLvl + lvls);
 
             return true;
         }
@@ -136,7 +193,7 @@ namespace Game.Earners
         {
             refund = 0;
 
-            int desiredLvl = _data.OpponentNegativeLvl - lvls;
+            int desiredLvl = _opNegLvl - lvls;
 
             if (desiredLvl < -1)
                 return false;
@@ -144,7 +201,7 @@ namespace Game.Earners
             float totalRefund = 0;
             var mods = _reference.NegativeModifiers;
 
-            for (int i = 0, lvl = _data.OpponentNegativeLvl + 1; i < lvls; ++i, ++lvl)
+            for (int i = 0, lvl = _opNegLvl + 1; i < lvls; ++i, ++lvl)
             {
                 totalRefund += mods[lvl].SellPrice;
             }
@@ -157,45 +214,47 @@ namespace Game.Earners
             return CanSellNegativeLevelsForOpponent(lvls, out _);
         }
 
+
         public bool TrySellNegativeLevels(int lvls)
         {
             if (!CanSellNegativeLevelsForOpponent(lvls, out var refund))
                 return false;
 
             GameManager.Earn(refund);
-            SetOpponentNegativeLvl(_data.OpponentNegativeLvl - lvls);
+            SetOpponentNegativeLvl(_opNegLvl - lvls);
 
             return true;
         }
 
 
-        private void SetPositiveLvl(int lvl)
-        {
-            _data.SetPositiveLvl(lvl);
-        }
-
-        private void SetNegativeLvl(int lvl)
-        {
-            _data.SetNegativeLvl(lvl);
-        }
-
-        private void SetOpponentNegativeLvl(int lvl)
-        {
-            _data.SetOpponentNegativeLvl(lvl);
-        }
-
-
         public float GetEarning()
         {
-            if (_data.PositiveLvl < 0)
+            if (_posLvl < 0)
                 return 0f;
 
-            var positive = _reference.PositiveModifiers[_data.PositiveLvl];
+            var positive = _reference.PositiveModifiers[_posLvl];
+            float flat = positive.Flat;
+            float mult = positive.Mult;
+
+            if (_negLvl >= 0)
+            {
+                var negative = _reference.NegativeModifiers[_negLvl];
+                flat += negative.Flat;
+                mult += negative.Mult;
+            }
+
+            float earning = flat * (1f + mult);
+
+            if (earning < 0)
+                earning = 0;
+
+            return earning;
         }
+
 
         public void ConfirmEarning(float earning)
         {
-            throw new System.NotImplementedException();
+            GameManager.Earn(earning);
         }
     }
 }

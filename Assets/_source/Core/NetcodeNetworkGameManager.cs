@@ -12,13 +12,6 @@ namespace Game.Core
         [SerializeField] private EarnersDatabaseSo _earnersDatabase;
 
 
-        private static readonly NativeArray<ulong> _toP0 =
-            new(new ulong[] { 0 }, Allocator.Persistent);
-
-        private static readonly NativeArray<ulong> _toP1 =
-            new(new ulong[] { 1 }, Allocator.Persistent);
-
-
         private readonly NetworkVariable<float> _winBalanceNetVar =
             new(-1f, readPerm: NetworkVariableReadPermission.Everyone,
                 writePerm: NetworkVariableWritePermission.Server);
@@ -34,6 +27,9 @@ namespace Game.Core
 
 
         private readonly Dictionary<EarnerSo, int> _earnerNegLvls = new();
+
+        private NativeArray<ulong> _toP0;
+        private NativeArray<ulong> _toP1;
 
 
         public float WinBalance
@@ -63,14 +59,26 @@ namespace Game.Core
 
         private void Awake()
         {
+            _toP0 = new(new ulong[] { 0 }, Allocator.Persistent);
+            _toP1 = new(new ulong[] { 1 }, Allocator.Persistent);
+
             _winBalanceNetVar.Value = _winBalance;
+        }
+
+        public override void OnDestroy()
+        {
+            if (_toP0 != null)
+                _toP0.Dispose();
+
+            if (_toP1 != null)
+                _toP1.Dispose();
         }
 
         public void SetPlayerBalance(float playerBalance)
         {
             GetPlayerBalanceNetVar().Value = playerBalance;
 
-            if(playerBalance >= WinBalance)
+            if (playerBalance >= WinBalance)
             {
                 AnnounceAsWinnerServerRpc();
             }

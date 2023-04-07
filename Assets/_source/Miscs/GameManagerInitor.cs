@@ -17,9 +17,9 @@ namespace Game.Miscs
             if (_networkGameManager != null
                 && !ReferenceEquals(_networkGameManager, _netGmComp))
             {
-                if (!_networkGameManager.TryGetComponent(typeof(INetworkGameManager_OLD), out var ngm))
+                if (!_networkGameManager.TryGetComponent(typeof(INetworkGameManager), out var ngm))
                 {
-                    Debug.LogError($"Unable to find {nameof(INetworkGameManager_OLD)} component" +
+                    Debug.LogError($"Unable to find {nameof(INetworkGameManager)} component" +
                         $" on {_networkGameManager.name} GameObject");
 
                     _networkGameManager = null;
@@ -37,7 +37,7 @@ namespace Game.Miscs
 
         private void Awake()
         {
-            _gameManager.Init((INetworkGameManager_OLD)_netGmComp, _winBalance);
+            _gameManager.Init((INetworkGameManager)_netGmComp, _winBalance);
         }
     }
 }

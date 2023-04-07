@@ -10,18 +10,37 @@ namespace Game.Earners.Clicker
 
 
         [SerializeField] private AntiAutoClicker _antiAutoClicker;
+        [SerializeField] private bool _upg;
 
 
         public event ClickRegisteredDelegate ClickRegistered;
 
 
+        protected override void Start()
+        {
+            base.Start();
+            ConfirmEarning(9000);
+        }
+
+        private void Update()
+        {
+            if (_upg)
+            {
+                _upg = false;
+                var lvldUp = TryBuyPositiveLevels(1);
+                Debug.Log(lvldUp);
+            }
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
+            Debug.Log("attempt");
             if (!_antiAutoClicker.ShouldRegisterClick())
                 return;
 
-            var earning = ();
-
+            Debug.Log("click registered");
+            var earning = GetEarning();
+            Debug.Log(earning);
             ClickRegistered?.Invoke(this, earning, eventData.pointerPressRaycast.worldPosition);
             ConfirmEarning(earning);
         }
