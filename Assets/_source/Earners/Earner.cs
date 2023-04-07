@@ -116,21 +116,15 @@ namespace Game.Earners
         }
 
 
-        internal bool CanSellPositiveLevels(int lvlsAmount, out float refund)
+        internal bool CanSellPositiveLevels(int lvls, out float refund)
         {
             refund = 0;
-            int desiredLvl = _posLvl - lvlsAmount;
+            int desiredLvl = _posLvl - lvls;
 
             if (desiredLvl < -1)
                 return false;
 
-            var mods = _reference.PositiveModifiers;
-
-            for (int i = 0, lvl = _posLvl + 1; i < lvlsAmount; ++i, ++lvl)
-            {
-                refund += mods[lvl].SellPrice;
-            }
-
+            refund = GetPositiveLevelsSellCost(lvls);
             return true;
         }
 
@@ -177,7 +171,7 @@ namespace Game.Earners
             return CanBuyNegativeLevelsForOpponent(lvls, out _);
         }
 
-        public bool TryBuyNegativeLevels(int lvls)
+        public bool TryBuyNegativeLevelsForOpponent(int lvls)
         {
             if (!CanBuyNegativeLevelsForOpponent(lvls, out var totalCost))
                 return false;
@@ -198,14 +192,7 @@ namespace Game.Earners
             if (desiredLvl < -1)
                 return false;
 
-            float totalRefund = 0;
-            var mods = _reference.NegativeModifiers;
-
-            for (int i = 0, lvl = _opNegLvl + 1; i < lvls; ++i, ++lvl)
-            {
-                totalRefund += mods[lvl].SellPrice;
-            }
-
+            refund = GetNegativeLevelsForOpponentSellCost(lvls);
             return true;
         }
 
@@ -215,7 +202,7 @@ namespace Game.Earners
         }
 
 
-        public bool TrySellNegativeLevels(int lvls)
+        public bool TrySellNegativeLevelsForOpponent(int lvls)
         {
             if (!CanSellNegativeLevelsForOpponent(lvls, out var refund))
                 return false;
@@ -255,6 +242,59 @@ namespace Game.Earners
         public void ConfirmEarning(float earning)
         {
             GameManager.Earn(earning);
+        }
+
+        public float GetPositiveLevelsBuyCost(int lvls)
+        {
+            float totalCost = 0;
+            var mods = _reference.PositiveModifiers;
+
+            for (int i = 0, lvl = _posLvl + 1; i < lvls; ++i, ++lvl)
+            {
+                totalCost += mods[lvl].BuyPrice;
+            }
+
+            return totalCost;
+        }
+
+        public float GetPositiveLevelsSellCost(int lvls)
+        {
+            float refund = 0;
+            var mods = _reference.PositiveModifiers;
+
+            for (int i = 0, lvl = _posLvl + 1; i < lvls; ++i, ++lvl)
+            {
+                refund += mods[lvl].SellPrice;
+            }
+
+            return refund;
+        }
+
+
+        public float GetNegativeLevelsForOpponentBuyCost(int lvls)
+        {
+            float totalCost = 0;
+            var mods = _reference.NegativeModifiers;
+
+            for (int i = 0, lvl = _opNegLvl + 1; i < lvls; ++i, ++lvl)
+            {
+                totalCost += mods[lvl].BuyPrice;
+            }
+
+            return totalCost;
+        }
+
+        public float GetNegativeLevelsForOpponentSellCost(int lvls)
+        {
+            float refund = 0;
+            var mods = _reference.NegativeModifiers;
+
+            for (int i = 0, lvl = _opNegLvl + 1; i < lvls; ++i, ++lvl)
+            {
+                refund += mods[lvl].SellPrice;
+            }
+
+            return refund;
         }
     }
 }

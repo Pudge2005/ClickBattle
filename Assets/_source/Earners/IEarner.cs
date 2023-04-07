@@ -1,11 +1,8 @@
-﻿using System;
-using System.Runtime.Remoting.Metadata;
-
-namespace Game.Earners
+﻿namespace Game.Earners
 {
     public interface IEarner
     {
-        delegate void LvlChangedDelegate(IEarner data, int prevLvl, int newLvl);
+        delegate void LvlChangedDelegate(IEarner earner, int prevLvl, int newLvl);
 
 
         EarnerSo EarnerSo { get; }
@@ -23,13 +20,23 @@ namespace Game.Earners
         event LvlChangedDelegate OpponentNegativeLvlChanged;
 
 
-        bool TryBuyPositiveLevels(int lvlsAmount);
+        float GetPositiveLevelsBuyCost(int lvls);
+        float GetNegativeLevelsForOpponentBuyCost(int lvls);
 
-        bool TrySellPositiveLevels(int lvlsAmount);
+        float GetPositiveLevelsSellCost(int lvls);
+        float GetNegativeLevelsForOpponentSellCost(int lvls);
 
-        bool TryBuyNegativeLevels(int lvlsAmount);
+        bool CanBuyPositiveLevels(int lvls);
+        bool TryBuyPositiveLevels(int lvls);
 
-        bool TrySellNegativeLevels(int lvlsAmount);
+        bool CanSellPositiveLevels(int lvls);
+        bool TrySellPositiveLevels(int lvls);
+
+        bool CanBuyNegativeLevelsForOpponent(int lvls);
+        bool TryBuyNegativeLevelsForOpponent(int lvls);
+
+        bool CanSellNegativeLevelsForOpponent(int lvls);
+        bool TrySellNegativeLevelsForOpponent(int lvls);
 
 
         float GetEarning();

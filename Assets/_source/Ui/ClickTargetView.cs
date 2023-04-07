@@ -1,7 +1,8 @@
-﻿using Game.Visual;
+﻿using Game.Earners.Clicker;
+using Game.Visual;
 using UnityEngine;
 
-namespace Game.Earners.Clicker
+namespace Game.Ui
 {
     [RequireComponent(typeof(ClickTarget))]
     public sealed class ClickTargetView : MonoBehaviour
